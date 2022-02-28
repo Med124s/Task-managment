@@ -1,0 +1,25 @@
+<ul class="list-group">
+    <li *ngFor="let t of tasksResult" class="list-group-item d-flex justify-content-between align-items-center">
+        <button (click)="deleteTask(t.id)" class="btn btn-dark btn-sm">
+            <i class="fa fa-trash"></i>
+        </button>
+        {{ t.label }}
+        <span style="cursor: pointer;" (click)="completed(t)" [ngClass]="
+        {
+            'badge-info':t.completed,
+            'badge-danger':!t.completed
+        }
+            " 
+        class="badge badge-secondary badge-pill">
+        <i class="fa" [ngClass]="{
+            'fa-thumbs-up':t.completed,
+            'fa-thumbs-down':!t.completed
+        }"></i>
+        
+        </span>
+        <button (click)="editTask(t)" data-toggle="modal" data-target="#updateTask" data-wathever="@update" class="btn btn-warning btn-sm">
+            <i class="fa fa-pencil"></i>
+        </button>
+    </li>
+    
+</ul>
